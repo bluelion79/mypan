@@ -46,6 +46,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                       color: FlutterFlowTheme.of(context).darkBG,
                     ),
               ),
+              Text(
+                '다양한 수행 평가일 일정',
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Lexend Deca',
+                      color: FlutterFlowTheme.of(context).primaryBlack,
+                    ),
+              ),
             ],
           ),
         ),
