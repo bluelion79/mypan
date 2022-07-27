@@ -26,7 +26,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          '수행평가 일정',
+          'Schedule',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
