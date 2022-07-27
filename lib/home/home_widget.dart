@@ -21,7 +21,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          '수행평가 1',
+          'My P.A.N',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
                 color: Colors.white,
@@ -38,7 +38,15 @@ class _HomeWidgetState extends State<HomeWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Text(
+                '수행평가 스케줄 관리',
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Lexend Deca',
+                      color: FlutterFlowTheme.of(context).darkBG,
+                    ),
+              ),
+            ],
           ),
         ),
       ),
