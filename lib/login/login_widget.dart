@@ -3,14 +3,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MainWidget extends StatefulWidget {
-  const MainWidget({Key key}) : super(key: key);
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({Key key}) : super(key: key);
 
   @override
-  _MainWidgetState createState() => _MainWidgetState();
+  _LoginWidgetState createState() => _LoginWidgetState();
 }
 
-class _MainWidgetState extends State<MainWidget> {
+class _LoginWidgetState extends State<LoginWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -21,7 +21,7 @@ class _MainWidgetState extends State<MainWidget> {
         backgroundColor: Color(0xFF4756F5),
         automaticallyImplyLeading: false,
         title: Text(
-          'My P.A.N',
+          'Login',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
                 color: Colors.white,
@@ -32,7 +32,7 @@ class _MainWidgetState extends State<MainWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).white,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
