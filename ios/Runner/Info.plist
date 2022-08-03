@@ -21,7 +21,19 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.736687023370-rskscaq23jhlhr5jgab857um78d8th35</string>
+                
+            </array>
+        </dict>
 
+    </array>
 
 
 	<key>CFBundleVersion</key>

@@ -1,2 +1,3 @@
 // Export pages
-export 'home/home_widget.dart' show HomeWidget;
+export 'lon_in/lon_in_widget.dart' show LonInWidget;
+export 'main/main_widget.dart' show MainWidget;
