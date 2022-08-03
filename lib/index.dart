@@ -1,3 +1,3 @@
 // Export pages
-export 'lon_in/lon_in_widget.dart' show LonInWidget;
 export 'main/main_widget.dart' show MainWidget;
+export 'sign_in/sign_in_widget.dart' show SignInWidget;
