@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>MyPAN</string>
+	<string>My Task Manager</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MyPAN</string>
+	<string>My Task Manager</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.736687023370-rskscaq23jhlhr5jgab857um78d8th35</string>
+                <string>com.googleusercontent.apps.736687023370-ov1ni2pup4ev3q922ao8vb83os2jja2f</string>
                 
             </array>
         </dict>
@@ -42,6 +42,11 @@
 	<true/>
 
 
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

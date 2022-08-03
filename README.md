@@ -1,4 +1,4 @@
-# MyPAN
+# My Task Manager
 
 A new Flutter project.
 

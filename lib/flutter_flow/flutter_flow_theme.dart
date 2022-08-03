@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kThemeModeKey = '__theme_mode__';
-SharedPreferences _prefs;
+SharedPreferences? _prefs;
 
 abstract class FlutterFlowTheme {
   static Future initialize() async =>
@@ -29,22 +29,19 @@ abstract class FlutterFlowTheme {
           ? DarkModeTheme()
           : LightModeTheme();
 
-  Color primaryColor;
-  Color secondaryColor;
-  Color tertiaryColor;
-  Color alternate;
-  Color primaryBackground;
-  Color secondaryBackground;
-  Color primaryText;
-  Color secondaryText;
+  late Color primaryColor;
+  late Color secondaryColor;
+  late Color tertiaryColor;
+  late Color alternate;
+  late Color primaryBackground;
+  late Color secondaryBackground;
+  late Color primaryText;
+  late Color secondaryText;
 
-  Color white;
-  Color grayBG;
-  Color darkBG;
-  Color primaryBlack;
-  Color primaryBtnText;
-  Color lineColor;
-  Color customColor1;
+  late Color white;
+  late Color lineColor;
+  late Color darkBG;
+  late Color primaryBlack;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -65,22 +62,19 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  Color primaryColor = const Color(0xFF42BEA5);
-  Color secondaryColor = const Color(0xFF359F8A);
-  Color tertiaryColor = const Color(0xFF95A1AC);
-  Color alternate = const Color(0xFFB8E6E0);
-  Color primaryBackground = const Color(0xFFF1F4F8);
-  Color secondaryBackground = const Color(0xFFFFFFFF);
-  Color primaryText = const Color(0xFF0F1113);
-  Color secondaryText = const Color(0xFF57636C);
+  late Color primaryColor = const Color(0xFF42BEA5);
+  late Color secondaryColor = const Color(0xFF359F8A);
+  late Color tertiaryColor = const Color(0xFFE86969);
+  late Color alternate = const Color(0xFF262D34);
+  late Color primaryBackground = const Color(0xFFF1F4F8);
+  late Color secondaryBackground = const Color(0xFFFFFFFF);
+  late Color primaryText = const Color(0xFF1A1F24);
+  late Color secondaryText = const Color(0xFF95A1AC);
 
-  Color white = Color(0xFFFFFFFF);
-  Color grayBG = Color(0xFFDBE2E7);
-  Color darkBG = Color(0xFF1A1F24);
-  Color primaryBlack = Color(0xFF131619);
-  Color primaryBtnText = Color(0xFFFFFFFF);
-  Color lineColor = Color(0xFFE0E3E7);
-  Color customColor1 = Color(0xFF2FB73C);
+  late Color white = Color(0xFFFFFFFF);
+  late Color lineColor = Color(0xFFDBE2E7);
+  late Color darkBG = Color(0xFF1A1F24);
+  late Color primaryBlack = Color(0xFF131619);
 }
 
 abstract class Typography {
@@ -105,91 +99,88 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Lexend Deca';
+  String get title1Family => 'Outfit';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.white,
+        'Outfit',
+        color: theme.primaryText,
         fontWeight: FontWeight.bold,
         fontSize: 34,
       );
-  String get title2Family => 'Lexend Deca';
+  String get title2Family => 'Outfit';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.white,
+        'Outfit',
+        color: theme.primaryText,
         fontWeight: FontWeight.bold,
         fontSize: 24,
       );
-  String get title3Family => 'Lexend Deca';
+  String get title3Family => 'Outfit';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.white,
+        'Outfit',
+        color: theme.primaryText,
         fontWeight: FontWeight.bold,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Lexend Deca';
+  String get subtitle1Family => 'Outfit';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.tertiaryColor,
+        'Outfit',
+        color: theme.white,
         fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  String get subtitle2Family => 'Lexend Deca';
+  String get subtitle2Family => 'Outfit';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.white,
-        fontWeight: FontWeight.normal,
-        fontSize: 16,
-      );
-  String get bodyText1Family => 'Lexend Deca';
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.white,
+        'Outfit',
+        color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Lexend Deca';
+  String get bodyText1Family => 'Outfit';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Outfit',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'Outfit';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Lexend Deca',
-        color: theme.tertiaryColor,
+        'Outfit',
+        color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12,
       );
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  Color primaryColor = const Color(0xFF42BEA5);
-  Color secondaryColor = const Color(0xFF359F8A);
-  Color tertiaryColor = const Color(0xFF95A1AC);
-  Color alternate = const Color(0xFFB8E6E0);
-  Color primaryBackground = const Color(0xFF1A1F24);
-  Color secondaryBackground = const Color(0xFF0F1113);
-  Color primaryText = const Color(0xFFFFFFFF);
-  Color secondaryText = const Color(0xFF95A1AC);
+  late Color primaryColor = const Color(0xFF42BEA5);
+  late Color secondaryColor = const Color(0xFF359F8A);
+  late Color tertiaryColor = const Color(0xFFE86969);
+  late Color alternate = const Color(0xFF262D34);
+  late Color primaryBackground = const Color(0xFF1A1F24);
+  late Color secondaryBackground = const Color(0xFF131619);
+  late Color primaryText = const Color(0xFFFFFFFF);
+  late Color secondaryText = const Color(0xFF95A1AC);
 
-  Color white = Color(0xFFFFFFFF);
-  Color grayBG = Color(0xFFDBE2E7);
-  Color darkBG = Color(0xFF1A1F24);
-  Color primaryBlack = Color(0xFF131619);
-  Color primaryBtnText = Color(0xFFFFFFFF);
-  Color lineColor = Color(0xFF22282F);
-  Color customColor1 = Color(0xFF452FB7);
+  late Color white = Color(0xFFFFFFFF);
+  late Color lineColor = Color(0xFF262D34);
+  late Color darkBG = Color(0xFF1A1F24);
+  late Color primaryBlack = Color(0xFF131619);
 }
 
 extension TextStyleHelper on TextStyle {
   TextStyle override({
-    String fontFamily,
-    Color color,
-    double fontSize,
-    FontWeight fontWeight,
-    double letterSpacing,
-    FontStyle fontStyle,
+    String? fontFamily,
+    Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    double? letterSpacing,
+    FontStyle? fontStyle,
     bool useGoogleFonts = true,
-    TextDecoration decoration,
-    double lineHeight,
+    TextDecoration? decoration,
+    double? lineHeight,
   }) =>
       useGoogleFonts
           ? GoogleFonts.getFont(
-              fontFamily,
+              fontFamily!,
               color: color ?? this.color,
               fontSize: fontSize ?? this.fontSize,
               letterSpacing: letterSpacing ?? this.letterSpacing,

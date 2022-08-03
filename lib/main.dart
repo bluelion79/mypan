@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
-
+import 'backend/push_notifications/push_notifications_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'index.dart';
 
 void main() async {
@@ -24,23 +25,24 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>();
+      context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
+  Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
-  Stream<MyPANFirebaseUser> userStream;
-  MyPANFirebaseUser initialUser;
+  late Stream<MyTaskManagerFirebaseUser> userStream;
+  MyTaskManagerFirebaseUser? initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
     super.initState();
-    userStream = myPANFirebaseUserStream()
+    userStream = myTaskManagerFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     Future.delayed(
       Duration(seconds: 1),
@@ -51,7 +53,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     authUserSub.cancel();
-
+    fcmTokenSub.cancel();
     super.dispose();
   }
 
@@ -64,7 +66,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MyPAN',
+      title: 'My Task Manager',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -81,14 +83,108 @@ class _MyAppState extends State<MyApp> {
               color: Colors.transparent,
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/IMG_7915.PNG',
+                  'assets/images/My_P.A.N_(1).png',
                   fit: BoxFit.cover,
                 ),
               ),
             )
-          : currentUser.loggedIn
-              ? MainWidget()
-              : LoginWidget(),
+          : currentUser!.loggedIn
+              ? PushNotificationsHandler(child: NavBarPage())
+              : SplashScreenWidget(),
+    );
+  }
+}
+
+class NavBarPage extends StatefulWidget {
+  NavBarPage({Key? key, this.initialPage}) : super(key: key);
+
+  final String? initialPage;
+
+  @override
+  _NavBarPageState createState() => _NavBarPageState();
+}
+
+/// This is the private State class that goes with NavBarPage.
+class _NavBarPageState extends State<NavBarPage> {
+  String _currentPage = 'myTasks';
+
+  @override
+  void initState() {
+    super.initState();
+    _currentPage = widget.initialPage ?? _currentPage;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tabs = {
+      'myTasks': MyTasksWidget(),
+      'CompletedTasks': CompletedTasksWidget(),
+      'MyProfile': MyProfileWidget(),
+      'chatpage': ChatpageWidget(),
+    };
+    final currentIndex = tabs.keys.toList().indexOf(_currentPage);
+    return Scaffold(
+      body: tabs[_currentPage],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBlack,
+        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+        unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.list_alt,
+              size: 32,
+            ),
+            activeIcon: Icon(
+              Icons.list_alt,
+              size: 32,
+            ),
+            label: '--',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.done,
+              size: 32,
+            ),
+            activeIcon: Icon(
+              Icons.done,
+              size: 32,
+            ),
+            label: '--',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline,
+              size: 32,
+            ),
+            activeIcon: Icon(
+              Icons.person_sharp,
+              size: 32,
+            ),
+            label: '--',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.chat,
+              size: 32,
+            ),
+            activeIcon: Icon(
+              Icons.chat,
+              size: 32,
+            ),
+            label: 'Chat',
+            tooltip: '',
+          )
+        ],
+      ),
     );
   }
 }
