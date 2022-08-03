@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -354,7 +355,16 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                   );
                                   await widget.todoRef!.reference
                                       .update(toDoListUpdateData);
-                                  Navigator.pop(context);
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                      reverseDuration:
+                                          Duration(milliseconds: 0),
+                                      child: NavBarPage(initialPage: 'myTasks'),
+                                    ),
+                                  );
                                 },
                                 text: '수정',
                                 options: FFButtonOptions(

@@ -9,3 +9,4 @@ export 'task_details/task_details_widget.dart' show TaskDetailsWidget;
 export 'change_password/change_password_widget.dart' show ChangePasswordWidget;
 export 'my_profile/my_profile_widget.dart' show MyProfileWidget;
 export 'chatpage/chatpage_widget.dart' show ChatpageWidget;
+export 'calendar/calendar_widget.dart' show CalendarWidget;
