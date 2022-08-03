@@ -105,7 +105,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                '수행 평가 목록 수정',
+                                '수행 평가 목록 수정...',
                                 style: FlutterFlowTheme.of(context).title2,
                               ),
                             ],
