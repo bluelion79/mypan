@@ -3,10 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+const kThemeModeKey = '__theme_mode__';
+SharedPreferences _prefs;
+
 abstract class FlutterFlowTheme {
-  static FlutterFlowTheme of(BuildContext context) {
-    return LightModeTheme();
+  static Future initialize() async =>
+      _prefs = await SharedPreferences.getInstance();
+  static ThemeMode get themeMode {
+    final darkMode = _prefs?.getBool(kThemeModeKey);
+    return darkMode == null
+        ? ThemeMode.system
+        : darkMode
+            ? ThemeMode.dark
+            : ThemeMode.light;
   }
+
+  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
+      ? _prefs?.remove(kThemeModeKey)
+      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
+
+  static FlutterFlowTheme of(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? DarkModeTheme()
+          : LightModeTheme();
 
   Color primaryColor;
   Color secondaryColor;
@@ -21,6 +42,8 @@ abstract class FlutterFlowTheme {
   Color grayBG;
   Color darkBG;
   Color primaryBlack;
+  Color primaryBtnText;
+  Color lineColor;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -44,16 +67,18 @@ class LightModeTheme extends FlutterFlowTheme {
   Color primaryColor = const Color(0xFF42BEA5);
   Color secondaryColor = const Color(0xFF359F8A);
   Color tertiaryColor = const Color(0xFF95A1AC);
-  Color alternate = const Color(0x00000000);
-  Color primaryBackground = const Color(0x00000000);
-  Color secondaryBackground = const Color(0x00000000);
-  Color primaryText = const Color(0x00000000);
-  Color secondaryText = const Color(0x00000000);
+  Color alternate = const Color(0xFFB8E6E0);
+  Color primaryBackground = const Color(0xFFF1F4F8);
+  Color secondaryBackground = const Color(0xFFFFFFFF);
+  Color primaryText = const Color(0xFF0F1113);
+  Color secondaryText = const Color(0xFF57636C);
 
   Color white = Color(0xFFFFFFFF);
   Color grayBG = Color(0xFFDBE2E7);
   Color darkBG = Color(0xFF1A1F24);
   Color primaryBlack = Color(0xFF131619);
+  Color primaryBtnText = Color(0xFFFFFFFF);
+  Color lineColor = Color(0xFFE0E3E7);
 }
 
 abstract class Typography {
@@ -127,6 +152,24 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 12,
       );
+}
+
+class DarkModeTheme extends FlutterFlowTheme {
+  Color primaryColor = const Color(0xFF42BEA5);
+  Color secondaryColor = const Color(0xFF359F8A);
+  Color tertiaryColor = const Color(0xFF95A1AC);
+  Color alternate = const Color(0xFFB8E6E0);
+  Color primaryBackground = const Color(0xFF1A1F24);
+  Color secondaryBackground = const Color(0xFF0F1113);
+  Color primaryText = const Color(0xFFFFFFFF);
+  Color secondaryText = const Color(0xFF95A1AC);
+
+  Color white = Color(0xFFFFFFFF);
+  Color grayBG = Color(0xFFDBE2E7);
+  Color darkBG = Color(0xFF1A1F24);
+  Color primaryBlack = Color(0xFF131619);
+  Color primaryBtnText = Color(0xFFFFFFFF);
+  Color lineColor = Color(0xFF22282F);
 }
 
 extension TextStyleHelper on TextStyle {

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "736687023370",
+    "project_id": "mypan7942",
+    "storage_bucket": "mypan7942.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736687023370:android:e8b27df1dfd284d04a06f3",
+        "android_client_info": {
+          "package_name": "com.bluelion.mypan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736687023370-d0i45t6vbg0fhhidvb8i5rbdt3l5sf33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bluelion.mypan",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "736687023370-na3t0u9s4gjkbvfl95acnoam0q13ftva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLzHd_TBAlPcqwFiDNy_NlE0ST3gZgJ3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736687023370-na3t0u9s4gjkbvfl95acnoam0q13ftva.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "736687023370-rskscaq23jhlhr5jgab857um78d8th35.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bluelion.mypan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
