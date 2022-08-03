@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../calendar/calendar_widget.dart';
 import '../components/create_task_new_widget.dart';
 import '../components/empty_list_tasks_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -86,8 +87,13 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
               color: FlutterFlowTheme.of(context).white,
               size: 30,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CalendarWidget(),
+                ),
+              );
             },
           ),
         ],
