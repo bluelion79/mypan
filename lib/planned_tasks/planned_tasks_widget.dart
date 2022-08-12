@@ -1,4 +1,5 @@
 import '../backend/api_requests/api_calls.dart';
+import '../components/empty_official_plan_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -71,6 +72,7 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Builder(
                       builder: (context) {
@@ -78,6 +80,9 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                           plannedTasksGetPlanSheetResponse.jsonBody,
                           r'''$.values''',
                         ).toList();
+                        if (tasks.isEmpty) {
+                          return EmptyOfficialPlanWidget();
+                        }
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
