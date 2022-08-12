@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../task_details/task_details_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -203,63 +202,39 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               ),
                             );
                           },
-                          child: Slidable(
-                            actionPane: const SlidableScrollActionPane(),
-                            secondaryActions: [
-                              IconSlideAction(
-                                caption: '삭제',
-                                color: Color(0xFFF32124),
-                                icon: Icons.share,
-                                onTap: () async {
-                                  await listViewToDoListRecord.reference
-                                      .delete();
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                      reverseDuration:
-                                          Duration(milliseconds: 0),
-                                      child: CalendarWidget(),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.check_box_outline_blank_outlined,
-                                color: FlutterFlowTheme.of(context).white,
-                              ),
-                              title: Text(
-                                listViewToDoListRecord.toDoName!,
-                                style: FlutterFlowTheme.of(context)
-                                    .title3
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context).white,
-                                    ),
-                              ),
-                              subtitle: Text(
-                                dateTimeFormat('MMMMEEEEd',
-                                    listViewToDoListRecord.toDoDate!),
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context).white,
-                                    ),
-                              ),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF303030),
-                                size: 20,
-                              ),
-                              tileColor:
-                                  FlutterFlowTheme.of(context).primaryColor,
-                              dense: false,
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.check_box_outline_blank_outlined,
+                              color: FlutterFlowTheme.of(context).white,
                             ),
+                            title: Text(
+                              listViewToDoListRecord.toDoName!,
+                              style: FlutterFlowTheme.of(context)
+                                  .title3
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context).white,
+                                  ),
+                            ),
+                            subtitle: Text(
+                              dateTimeFormat('MMMMEEEEd',
+                                  listViewToDoListRecord.toDoDate!),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context).white,
+                                  ),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xFF303030),
+                              size: 20,
+                            ),
+                            tileColor:
+                                FlutterFlowTheme.of(context).primaryColor,
+                            dense: false,
                           ),
                         );
                       },

@@ -85,6 +85,7 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                         }
                         return ListView.builder(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: tasks.length,
