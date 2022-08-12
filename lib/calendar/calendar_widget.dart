@@ -98,7 +98,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         .where('toDoDate',
                             isGreaterThanOrEqualTo: calendarSelectedDay?.start)
                         .where('toDoDate',
-                            isLessThanOrEqualTo: calendarSelectedDay?.end),
+                            isLessThanOrEqualTo: calendarSelectedDay?.end)
+                        .orderBy('toDoDate'),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.

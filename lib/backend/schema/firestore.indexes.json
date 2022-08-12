@@ -32,7 +32,7 @@
         },
         {
           "fieldPath": "toDoDate",
-          "order": "DESCENDING"
+          "order": "ASCENDING"
         }
       ]
     }

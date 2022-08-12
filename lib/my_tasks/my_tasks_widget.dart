@@ -225,7 +225,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                         (toDoListRecord) => toDoListRecord
                             .where('user', isEqualTo: currentUserReference)
                             .where('toDoState', isEqualTo: false)
-                            .orderBy('toDoDate', descending: true);
+                            .orderBy('toDoDate');
                     if (_pagingController != null) {
                       final query = queryBuilder(ToDoListRecord.collection);
                       if (query != _pagingQuery) {
@@ -245,7 +245,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                         queryBuilder: (toDoListRecord) => toDoListRecord
                             .where('user', isEqualTo: currentUserReference)
                             .where('toDoState', isEqualTo: false)
-                            .orderBy('toDoDate', descending: true),
+                            .orderBy('toDoDate'),
                         nextPageMarker: nextPageMarker,
                         pageSize: 25,
                         isStream: true,
