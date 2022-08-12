@@ -1,6 +1,6 @@
 {
-    "name": "My Task Manager",
-    "short_name": "My Task Manager",
+    "name": "MyTaskManager",
+    "short_name": "MyTaskManager",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

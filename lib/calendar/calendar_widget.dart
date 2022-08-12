@@ -171,52 +171,98 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   itemBuilder: (context, _, listViewIndex) {
                     final listViewToDoListRecord =
                         _pagingController!.itemList![listViewIndex];
-                    return InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.leftToRight,
-                            duration: Duration(milliseconds: 300),
-                            reverseDuration: Duration(milliseconds: 300),
-                            child: TaskDetailsWidget(
-                              toDoNote: listViewToDoListRecord.reference,
+                    return FutureBuilder<List<ToDoListRecord>>(
+                      future: queryToDoListRecordOnce(),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<ToDoListRecord> listTileToDoListRecordList =
+                            snapshot.data!;
+                        return InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                                reverseDuration: Duration(milliseconds: 0),
+                                child: TaskDetailsWidget(
+                                  toDoNote: listViewToDoListRecord.reference,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Slidable(
+                            actionPane: const SlidableScrollActionPane(),
+                            secondaryActions: [
+                              IconSlideAction(
+                                caption: '삭제',
+                                color: Color(0xFFF32124),
+                                icon: Icons.share,
+                                onTap: () async {
+                                  await listViewToDoListRecord.reference
+                                      .delete();
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                      reverseDuration:
+                                          Duration(milliseconds: 0),
+                                      child: CalendarWidget(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                            child: ListTile(
+                              leading: Icon(
+                                Icons.check_box_outline_blank_outlined,
+                                color: FlutterFlowTheme.of(context).white,
+                              ),
+                              title: Text(
+                                listViewToDoListRecord.toDoName!,
+                                style: FlutterFlowTheme.of(context)
+                                    .title3
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context).white,
+                                    ),
+                              ),
+                              subtitle: Text(
+                                dateTimeFormat('MMMMEEEEd',
+                                    listViewToDoListRecord.toDoDate!),
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context).white,
+                                    ),
+                              ),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios,
+                                color: Color(0xFF303030),
+                                size: 20,
+                              ),
+                              tileColor:
+                                  FlutterFlowTheme.of(context).primaryColor,
+                              dense: false,
                             ),
                           ),
                         );
                       },
-                      child: Slidable(
-                        actionPane: const SlidableScrollActionPane(),
-                        secondaryActions: [
-                          IconSlideAction(
-                            caption: '삭제',
-                            color: Color(0xFFF32124),
-                            icon: Icons.delete,
-                            onTap: () async {
-                              await listViewToDoListRecord.reference.delete();
-                            },
-                          ),
-                        ],
-                        child: ListTile(
-                          title: Text(
-                            listViewToDoListRecord.toDoName!,
-                            style: FlutterFlowTheme.of(context).title3,
-                          ),
-                          subtitle: Text(
-                            dateTimeFormat(
-                                'MMMEd', listViewToDoListRecord.toDoDate!),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xFF303030),
-                            size: 20,
-                          ),
-                          tileColor: Color(0xFFF5F5F5),
-                          dense: false,
-                        ),
-                      ),
                     );
                   },
                 ),

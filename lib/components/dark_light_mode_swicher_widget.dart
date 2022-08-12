@@ -64,7 +64,7 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          if ((Theme.of(context).brightness == Brightness.light))
+          if (Theme.of(context).brightness == Brightness.light)
             InkWell(
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.dark);
@@ -156,7 +156,7 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
                 ),
               ),
             ),
-          if ((Theme.of(context).brightness == Brightness.dark))
+          if (Theme.of(context).brightness == Brightness.dark)
             InkWell(
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.light);

@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../planned_tasks/planned_tasks_widget.dart';
 import '../task_details/task_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,18 +70,33 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            scaffoldKey.currentState!.openDrawer();
+          },
+        ),
         title: Text(
           '수행평가 목록',
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Outfit',
-                color: FlutterFlowTheme.of(context).white,
+                color: Colors.white,
+                fontSize: 22,
               ),
         ),
         actions: [
           FlutterFlowIconButton(
-            borderColor: FlutterFlowTheme.of(context).secondaryColor,
+            borderColor: Colors.transparent,
             borderRadius: 30,
-            borderWidth: 0,
+            borderWidth: 1,
             buttonSize: 60,
             icon: Icon(
               Icons.calendar_today_outlined,
@@ -90,15 +106,18 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
             onPressed: () async {
               await Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => CalendarWidget(),
+                PageTransition(
+                  type: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 300),
+                  reverseDuration: Duration(milliseconds: 300),
+                  child: CalendarWidget(),
                 ),
               );
             },
           ),
         ],
-        centerTitle: false,
-        elevation: 0,
+        centerTitle: true,
+        elevation: 2,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
@@ -127,6 +146,54 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
           size: 28,
         ),
       ),
+      drawer: Drawer(
+        elevation: 16,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+              child: Container(
+                width: 120,
+                height: 120,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.network(
+                  'https://picsum.photos/seed/310/600',
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PlannedTasksWidget(),
+                  ),
+                );
+              },
+              child: ListTile(
+                title: Text(
+                  '수행평가 일정',
+                  style: FlutterFlowTheme.of(context).title3.override(
+                        fontFamily: 'Outfit',
+                        color: FlutterFlowTheme.of(context).white,
+                      ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Color(0xFF303030),
+                  size: 20,
+                ),
+                tileColor: FlutterFlowTheme.of(context).primaryColor,
+                dense: false,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -147,18 +214,6 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    '수행평가 예정 목록',
-                    style: FlutterFlowTheme.of(context).subtitle2,
-                  ),
-                ],
-              ),
             ),
             Expanded(
               child: Padding(
