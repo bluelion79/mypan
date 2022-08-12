@@ -7,53 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:736687023370:android:ed780e4fd95568b24a06f3",
+        "mobilesdk_app_id": "1:736687023370:android:4be01351b96f083e4a06f3",
         "android_client_info": {
-          "package_name": "Robin.Do"
+          "package_name": "com.bluelion79.mytaskmanager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "736687023370-na3t0u9s4gjkbvfl95acnoam0q13ftva.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBLzHd_TBAlPcqwFiDNy_NlE0ST3gZgJ3s"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "736687023370-na3t0u9s4gjkbvfl95acnoam0q13ftva.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "736687023370-ov1ni2pup4ev3q922ao8vb83os2jja2f.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "Robin.Do"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:736687023370:android:e8b27df1dfd284d04a06f3",
-        "android_client_info": {
-          "package_name": "com.bluelion.mypan"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "736687023370-d0i45t6vbg0fhhidvb8i5rbdt3l5sf33.apps.googleusercontent.com",
+          "client_id": "736687023370-7lpkk9683cpbbag8ee5ecghvok5k9423.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.bluelion.mypan",
+            "package_name": "com.bluelion79.mytaskmanager",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },

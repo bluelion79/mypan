@@ -241,16 +241,6 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2,
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            4, 0, 0, 0),
-                                        child: Text(
-                                          dateTimeFormat(
-                                              'jm', widget.todoRef!.toDoDate!),
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2,
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -262,7 +252,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                           child: InkWell(
                             onTap: () async {
-                              await DatePicker.showDateTimePicker(
+                              await DatePicker.showDatePicker(
                                 context,
                                 showTitleActions: true,
                                 onConfirm: (date) {
@@ -298,15 +288,6 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 0, 0, 0),
-                                      child: Text(
-                                        dateTimeFormat('jm', datePicked),
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2,
-                                      ),
                                     ),
                                   ],
                                 ),

@@ -1,4 +1,4 @@
-# My Task Manager
+# MyTaskManager
 
 A new Flutter project.
 

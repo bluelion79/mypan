@@ -400,8 +400,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           ),
                                         ),
                                       ),
-                                    if ((Theme.of(context).brightness ==
-                                        Brightness.dark))
+                                    if (Theme.of(context).brightness ==
+                                        Brightness.dark)
                                       InkWell(
                                         onTap: () async {
                                           setDarkModeSetting(

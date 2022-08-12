@@ -205,21 +205,6 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
                                       taskDetailsToDoListRecord.toDoDate!),
                                   style: FlutterFlowTheme.of(context).title2,
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4, 0, 0, 0),
-                                  child: Text(
-                                    dateTimeFormat('jm',
-                                        taskDetailsToDoListRecord.toDoDate!),
-                                    style: FlutterFlowTheme.of(context)
-                                        .title2
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                        ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
