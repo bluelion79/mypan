@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import '../task_details/task_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -82,12 +83,17 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
             borderWidth: 1,
             buttonSize: 60,
             icon: Icon(
-              Icons.file_download_done,
+              Icons.format_list_numbered,
               color: FlutterFlowTheme.of(context).white,
               size: 30,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NavBarPage(initialPage: 'myTasks'),
+                ),
+              );
             },
           ),
         ],

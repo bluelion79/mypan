@@ -101,8 +101,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               PagedListView<DocumentSnapshot<Object?>?, ToDoListRecord>(
                 pagingController: () {
                   final Query<Object?> Function(Query<Object?>) queryBuilder =
-                      (toDoListRecord) => toDoListRecord.where('toDoDate',
-                          isEqualTo: calendarSelectedDay?.start);
+                      (toDoListRecord) => toDoListRecord
+                          .where('toDoDate',
+                              isEqualTo: calendarSelectedDay?.start)
+                          .where('toDoDate',
+                              isEqualTo: calendarSelectedDay?.end);
                   if (_pagingController != null) {
                     final query = queryBuilder(ToDoListRecord.collection);
                     if (query != _pagingQuery) {
@@ -119,9 +122,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   _pagingQuery = queryBuilder(ToDoListRecord.collection);
                   _pagingController!.addPageRequestListener((nextPageMarker) {
                     queryToDoListRecordPage(
-                      queryBuilder: (toDoListRecord) => toDoListRecord.where(
-                          'toDoDate',
-                          isEqualTo: calendarSelectedDay?.start),
+                      queryBuilder: (toDoListRecord) => toDoListRecord
+                          .where('toDoDate',
+                              isEqualTo: calendarSelectedDay?.start)
+                          .where('toDoDate',
+                              isEqualTo: calendarSelectedDay?.end),
                       nextPageMarker: nextPageMarker,
                       pageSize: 25,
                       isStream: true,
@@ -217,8 +222,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                   ),
                             ),
                             subtitle: Text(
-                              dateTimeFormat('MMMMEEEEd',
-                                  listViewToDoListRecord.toDoDate!),
+                              dateTimeFormat(
+                                  'MEd', listViewToDoListRecord.toDoDate!),
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
