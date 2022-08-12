@@ -357,19 +357,6 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                                                         .subtitle2,
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 4, 0, 0),
-                                              child: Text(
-                                                dateTimeFormat(
-                                                    'jm',
-                                                    listViewToDoListRecord
-                                                        .toDoDate!),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2,
-                                              ),
-                                            ),
                                           ],
                                         ),
                                       ],

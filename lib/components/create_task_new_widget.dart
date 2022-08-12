@@ -195,7 +195,7 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                               EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                           child: InkWell(
                             onTap: () async {
-                              await DatePicker.showDateTimePicker(
+                              await DatePicker.showDatePicker(
                                 context,
                                 showTitleActions: true,
                                 onConfirm: (date) {
@@ -231,15 +231,6 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 0, 0, 0),
-                                      child: Text(
-                                        dateTimeFormat('jm', datePicked),
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2,
-                                      ),
                                     ),
                                   ],
                                 ),
