@@ -99,6 +99,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             isGreaterThanOrEqualTo: calendarSelectedDay?.start)
                         .where('toDoDate',
                             isLessThanOrEqualTo: calendarSelectedDay?.end)
+                        .where('toDoState', isEqualTo: false)
                         .orderBy('toDoDate'),
                   ),
                   builder: (context, snapshot) {

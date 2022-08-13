@@ -46,6 +46,16 @@ abstract class FlutterFlowTheme {
   late Color customColor3;
   late Color customColor4;
   late Color background;
+  late Color richBlackFOGRA39;
+  late Color blue;
+  late Color turquoise;
+  late Color cultured;
+  late Color cerise;
+  late Color blueBell;
+  late Color cadetBlueCrayola;
+  late Color opal;
+  late Color grannySmithApple;
+  late Color mintGreen;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -83,6 +93,16 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor3 = Color(0xFFDF3F3F);
   late Color customColor4 = Color(0xFF090F13);
   late Color background = Color(0xFF1D2429);
+  late Color richBlackFOGRA39 = Color(0xFF070707);
+  late Color blue = Color(0xFF3A28DE);
+  late Color turquoise = Color(0xFF34D1BF);
+  late Color cultured = Color(0xFFEFEFEF);
+  late Color cerise = Color(0xFFD1345B);
+  late Color blueBell = Color(0xFFA09EBB);
+  late Color cadetBlueCrayola = Color(0xFFA8AEC1);
+  late Color opal = Color(0xFFB5D2CB);
+  late Color grannySmithApple = Color(0xFFBFFFBC);
+  late Color mintGreen = Color(0xFFA6FFA1);
 }
 
 abstract class Typography {
@@ -176,6 +196,16 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color customColor3 = Color(0xFFDF3F3F);
   late Color customColor4 = Color(0xFF090F13);
   late Color background = Color(0xFF1D2429);
+  late Color richBlackFOGRA39 = Color(0xFF070707);
+  late Color blue = Color(0xFF3A28DE);
+  late Color turquoise = Color(0xFF34D1BF);
+  late Color cultured = Color(0xFFEFEFEF);
+  late Color cerise = Color(0xFFD1345B);
+  late Color blueBell = Color(0xFFA09EBB);
+  late Color cadetBlueCrayola = Color(0xFFA8AEC1);
+  late Color opal = Color(0xFFB5D2CB);
+  late Color grannySmithApple = Color(0xFFBFFFBC);
+  late Color mintGreen = Color(0xFFA6FFA1);
 }
 
 extension TextStyleHelper on TextStyle {

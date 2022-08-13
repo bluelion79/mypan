@@ -35,6 +35,20 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "ToDoList",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "toDoState",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "toDoDate",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": [

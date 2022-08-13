@@ -5,10 +5,10 @@ import '../components/empty_list_tasks_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -235,80 +235,44 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
                                 offset: Offset(0, 2),
                               )
                             ],
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(0),
                           ),
-                          child: Row(
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 12, 0, 12),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        listViewToDoListRecord.toDoName!,
-                                        style:
-                                            FlutterFlowTheme.of(context).title2,
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: Text(
-                                              dateTimeFormat(
-                                                  'MMMEd',
-                                                  listViewToDoListRecord
-                                                      .completedDate!),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 12, 0),
-                                    child: ToggleIcon(
-                                      onPressed: () async {
-                                        final toDoListUpdateData = {
-                                          'toDoState': !listViewToDoListRecord
-                                              .toDoState!,
-                                        };
-                                        await listViewToDoListRecord.reference
-                                            .update(toDoListUpdateData);
-                                      },
-                                      value: listViewToDoListRecord.toDoState!,
-                                      onIcon: Icon(
-                                        Icons.check_circle,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        size: 25,
-                                      ),
-                                      offIcon: Icon(
-                                        Icons.radio_button_off,
-                                        color: Color(0xFF2B343A),
-                                        size: 25,
-                                      ),
-                                    ),
+                              Slidable(
+                                actionPane: const SlidableScrollActionPane(),
+                                secondaryActions: [
+                                  IconSlideAction(
+                                    caption: '삭제',
+                                    color: FlutterFlowTheme.of(context)
+                                        .customColor3,
+                                    icon: Icons.delete,
+                                    onTap: () async {
+                                      await listViewToDoListRecord.reference
+                                          .delete();
+                                    },
                                   ),
                                 ],
+                                child: ListTile(
+                                  title: Text(
+                                    listViewToDoListRecord.toDoName!,
+                                    style: FlutterFlowTheme.of(context).title3,
+                                  ),
+                                  subtitle: Text(
+                                    dateTimeFormat('MMMEd',
+                                        listViewToDoListRecord.completedDate!),
+                                    style:
+                                        FlutterFlowTheme.of(context).subtitle2,
+                                  ),
+                                  trailing: Icon(
+                                    Icons.chevron_left,
+                                    color: Color(0xFF303030),
+                                    size: 20,
+                                  ),
+                                  tileColor: Color(0xFFF5F5F5),
+                                  dense: false,
+                                ),
                               ),
                             ],
                           ),
