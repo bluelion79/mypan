@@ -128,7 +128,7 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
                                 Expanded(
                                   child: Text(
                                     taskDetailsToDoListRecord.toDoName!,
-                                    style: FlutterFlowTheme.of(context).title1,
+                                    style: FlutterFlowTheme.of(context).title2,
                                   ),
                                 ),
                               ],

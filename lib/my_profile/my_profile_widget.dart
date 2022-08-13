@@ -89,7 +89,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             automaticallyImplyLeading: false,
             title: Text(
               '프로필',
-              style: FlutterFlowTheme.of(context).title1.override(
+              style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).white,
                   ),

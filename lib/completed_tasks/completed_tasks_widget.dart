@@ -70,7 +70,7 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
         automaticallyImplyLeading: false,
         title: Text(
           '수행평가 완료',
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Outfit',
                 color: FlutterFlowTheme.of(context).white,
               ),
@@ -251,6 +251,17 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
                                     onTap: () async {
                                       await listViewToDoListRecord.reference
                                           .delete();
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                          reverseDuration:
+                                              Duration(milliseconds: 0),
+                                          child: NavBarPage(
+                                              initialPage: 'CompletedTasks'),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
