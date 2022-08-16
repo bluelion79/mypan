@@ -189,7 +189,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
-                      color: Color(0xFF303030),
+                      color: FlutterFlowTheme.of(context).white,
                       size: 20,
                     ),
                     tileColor: FlutterFlowTheme.of(context).primaryColor,
@@ -203,23 +203,6 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 53,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: Image.asset(
-                            'assets/images/waves@2x.png',
-                          ).image,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
@@ -321,8 +304,8 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                               child: Container(
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 5,
@@ -350,7 +333,14 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                                               listViewToDoListRecord.toDoName!,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .title2,
+                                                      .title2
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .white,
+                                                      ),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -365,7 +355,13 @@ class _MyTasksWidgetState extends State<MyTasksWidget>
                                                             .toDoDate!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle2,
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .blueBell,
+                                                        ),
                                                   ),
                                                 ),
                                               ],

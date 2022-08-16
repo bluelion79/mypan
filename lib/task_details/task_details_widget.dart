@@ -56,8 +56,7 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
             child: Scaffold(
               key: scaffoldKey,
               appBar: AppBar(
-                backgroundColor:
-                    FlutterFlowTheme.of(context).secondaryBackground,
+                backgroundColor: FlutterFlowTheme.of(context).primaryColor,
                 automaticallyImplyLeading: false,
                 leading: InkWell(
                   onTap: () async {

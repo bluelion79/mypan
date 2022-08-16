@@ -68,8 +68,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             child: Scaffold(
               key: scaffoldKey,
               appBar: AppBar(
-                backgroundColor:
-                    FlutterFlowTheme.of(context).secondaryBackground,
+                backgroundColor: FlutterFlowTheme.of(context).primaryColor,
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
                   borderColor: Colors.transparent,

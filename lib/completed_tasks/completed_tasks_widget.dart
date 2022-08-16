@@ -135,17 +135,6 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Image.asset(
-                      'assets/images/waves@2x.png',
-                      width: MediaQuery.of(context).size.width,
-                      height: 56,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
@@ -235,8 +224,8 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 5,
@@ -296,7 +285,8 @@ class _CompletedTasksWidgetState extends State<CompletedTasksWidget>
                                         color: Color(0xFF303030),
                                         size: 20,
                                       ),
-                                      tileColor: Color(0xFFF5F5F5),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       dense: false,
                                     ),
                                   ),

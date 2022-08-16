@@ -165,8 +165,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 5,
@@ -327,7 +327,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryColor,
                                               ),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
@@ -594,7 +594,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           width: 130,
                                           height: 50,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                              .primaryColor,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .subtitle1
@@ -602,7 +602,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 fontFamily: 'Outfit',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .white,
                                               ),
                                           elevation: 3,
                                           borderSide: BorderSide(

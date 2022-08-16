@@ -107,7 +107,8 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3,
@@ -144,8 +145,9 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF4B39EF),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -168,8 +170,9 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
-                                                                    0xFF090F13),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -202,8 +205,9 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
-                                                                  color: Color(
-                                                                      0xFF090F13),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .white,
                                                                   fontSize: 12,
                                                                   fontWeight:
                                                                       FontWeight
@@ -222,8 +226,9 @@ class _PlannedTasksWidgetState extends State<PlannedTasksWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
-                                                                    0xFF7C8791),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .white,
                                                                 fontSize: 12,
                                                                 fontWeight:
                                                                     FontWeight
