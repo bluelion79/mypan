@@ -14,6 +14,13 @@ class EmptyOfficialPlanWidget extends StatefulWidget {
 
 class _EmptyOfficialPlanWidgetState extends State<EmptyOfficialPlanWidget> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,

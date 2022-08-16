@@ -55,6 +55,8 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -1,7 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
@@ -59,7 +59,8 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  void setLocale(Locale value) => setState(() => _locale = value);
+  void setLocale(String language) =>
+      setState(() => _locale = createLocale(language));
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
@@ -121,8 +122,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'myTasks': MyTasksWidget(),
       'CompletedTasks': CompletedTasksWidget(),
-      'MyProfile': MyProfileWidget(),
       'chatpage': ChatpageWidget(),
+      'MyProfile': MyProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -163,18 +164,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outline,
-              size: 32,
-            ),
-            activeIcon: Icon(
-              Icons.person_sharp,
-              size: 32,
-            ),
-            label: '--',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.chat,
               size: 32,
             ),
@@ -183,6 +172,18 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 32,
             ),
             label: 'Chat',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline,
+              size: 32,
+            ),
+            activeIcon: Icon(
+              Icons.person_sharp,
+              size: 32,
+            ),
+            label: '--',
             tooltip: '',
           )
         ],

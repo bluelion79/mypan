@@ -14,6 +14,13 @@ class EmptyListTasksWidget extends StatefulWidget {
 
 class _EmptyListTasksWidgetState extends State<EmptyListTasksWidget> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,

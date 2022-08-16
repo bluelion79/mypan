@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,6 +34,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
     textController1 = TextEditingController(text: widget.todoRef!.toDoName);
     textController2 =
         TextEditingController(text: widget.todoRef!.toDoDescription);
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -252,15 +254,34 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                           child: InkWell(
                             onTap: () async {
-                              await DatePicker.showDatePicker(
-                                context,
-                                showTitleActions: true,
-                                onConfirm: (date) {
-                                  setState(() => datePicked = date);
-                                },
-                                currentTime: getCurrentTimestamp,
-                                minTime: DateTime(0, 0, 0),
-                              );
+                              if (kIsWeb) {
+                                final _datePickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: getCurrentTimestamp,
+                                  firstDate: DateTime(1900),
+                                  lastDate: DateTime(2050),
+                                );
+
+                                if (_datePickedDate != null) {
+                                  setState(
+                                    () => datePicked = DateTime(
+                                      _datePickedDate.year,
+                                      _datePickedDate.month,
+                                      _datePickedDate.day,
+                                    ),
+                                  );
+                                }
+                              } else {
+                                await DatePicker.showDatePicker(
+                                  context,
+                                  showTitleActions: true,
+                                  onConfirm: (date) {
+                                    setState(() => datePicked = date);
+                                  },
+                                  currentTime: getCurrentTimestamp,
+                                  minTime: DateTime(0, 0, 0),
+                                );
+                              }
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.92,
