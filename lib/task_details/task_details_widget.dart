@@ -139,8 +139,14 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
                                     Expanded(
                                       child: Text(
                                         taskDetailsToDoListRecord.toDoName!,
-                                        style:
-                                            FlutterFlowTheme.of(context).title2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .title2
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -218,8 +224,13 @@ class _TaskDetailsWidgetState extends State<TaskDetailsWidget> {
                                     Text(
                                       dateTimeFormat('MMMEd',
                                           taskDetailsToDoListRecord.toDoDate!),
-                                      style:
-                                          FlutterFlowTheme.of(context).title2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .title2
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                          ),
                                     ),
                                   ],
                                 ),
