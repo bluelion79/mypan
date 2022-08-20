@@ -75,7 +75,7 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: 470,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 7,
@@ -102,7 +102,12 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                             children: [
                               Text(
                                 '수행평가 목록 추가',
-                                style: FlutterFlowTheme.of(context).title2,
+                                style: FlutterFlowTheme.of(context)
+                                    .title2
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFFFAEBEF),
+                                    ),
                               ),
                             ],
                           ),
@@ -264,7 +269,7 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                               EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
@@ -274,14 +279,12 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                 options: FFButtonOptions(
                                   width: 110,
                                   height: 50,
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  color: FlutterFlowTheme.of(context).white,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        color: Colors.black,
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
@@ -316,16 +319,15 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                 },
                                 text: '저장',
                                 options: FFButtonOptions(
-                                  width: 170,
+                                  width: 110,
                                   height: 50,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).white,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle1
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .richBlackFOGRA39,
                                       ),
                                   elevation: 3,
                                   borderSide: BorderSide(

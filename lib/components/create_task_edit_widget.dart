@@ -81,7 +81,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: 490,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 7,
@@ -120,7 +120,12 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                             children: [
                               Text(
                                 '수행 평가 목록 수정',
-                                style: FlutterFlowTheme.of(context).subtitle2,
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFFFAEBEF),
+                                    ),
                               ),
                             ],
                           ),
@@ -155,10 +160,14 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              fillColor: FlutterFlowTheme.of(context).lineColor,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                    ),
                           ),
                         ),
                         Padding(
@@ -190,10 +199,14 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              fillColor: FlutterFlowTheme.of(context).lineColor,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                    ),
                             textAlign: TextAlign.start,
                             maxLines: 3,
                           ),
@@ -205,8 +218,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                             width: MediaQuery.of(context).size.width * 0.92,
                             height: 50,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: FlutterFlowTheme.of(context).lineColor,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                 color: FlutterFlowTheme.of(context)
@@ -224,8 +236,13 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                       16, 0, 0, 0),
                                   child: Text(
                                     '수정 전 일정',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -241,7 +258,13 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                           'Change Date',
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle2,
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -287,8 +310,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                               width: MediaQuery.of(context).size.width * 0.92,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                color: FlutterFlowTheme.of(context).lineColor,
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   color: FlutterFlowTheme.of(context)
@@ -308,7 +330,12 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                         'Change Date',
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle2,
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -321,7 +348,7 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                               EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
@@ -331,14 +358,12 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                 options: FFButtonOptions(
                                   width: 110,
                                   height: 50,
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  color: Color(0xFFFAEBEF),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        color: Colors.black,
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
@@ -370,16 +395,14 @@ class _CreateTaskEditWidgetState extends State<CreateTaskEditWidget> {
                                 },
                                 text: '수정',
                                 options: FFButtonOptions(
-                                  width: 170,
+                                  width: 110,
                                   height: 50,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: Color(0xFFFAEBEF),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle1
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
+                                        color: Colors.black,
                                       ),
                                   elevation: 3,
                                   borderSide: BorderSide(
