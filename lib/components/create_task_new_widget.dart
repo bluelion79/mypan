@@ -32,6 +32,13 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
   }
 
   @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ClipRect(
       child: BackdropFilter(
@@ -153,6 +160,20 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
@@ -184,6 +205,20 @@ class _CreateTaskNewWidgetState extends State<CreateTaskNewWidget> {
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
                                   width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(8),

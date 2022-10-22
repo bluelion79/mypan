@@ -27,6 +27,12 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   }
 
   @override
+  void dispose() {
+    emailTextController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
@@ -54,188 +60,195 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             changePasswordUsersRecordList.isNotEmpty
                 ? changePasswordUsersRecordList.first
                 : null;
-        return Title(
-            title: 'ChangePassword',
-            color: FlutterFlowTheme.of(context).primaryColor,
-            child: Scaffold(
-              key: scaffoldKey,
-              appBar: AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-                automaticallyImplyLeading: false,
-                leading: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 30,
-                  buttonSize: 48,
-                  icon: Icon(
-                    Icons.chevron_left_rounded,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 30,
-                  ),
-                  onPressed: () async {
-                    Navigator.pop(context);
-                  },
-                ),
-                title: Text(
-                  '비밀번호 변경',
-                  style: FlutterFlowTheme.of(context).title2,
-                ),
-                actions: [],
-                centerTitle: false,
-                elevation: 0,
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30,
+              buttonSize: 48,
+              icon: Icon(
+                Icons.chevron_left_rounded,
+                color: FlutterFlowTheme.of(context).secondaryText,
+                size: 30,
               ),
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              body: SafeArea(
-                child: Form(
-                  key: formKey,
-                  autovalidateMode: AutovalidateMode.always,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 4,
-                              color: Color(0x230E151B),
-                              offset: Offset(0, 2),
-                            )
-                          ],
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(0),
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+            ),
+            title: Text(
+              '비밀번호 변경',
+              style: FlutterFlowTheme.of(context).title2,
+            ),
+            actions: [],
+            centerTitle: false,
+            elevation: 0,
+          ),
+          body: SafeArea(
+            child: Form(
+              key: formKey,
+              autovalidateMode: AutovalidateMode.always,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Color(0x230E151B),
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
+                            child: Text(
+                              '이메일을 입력하면 변경할 수 있는 페이지 링크를 받을 수 있습니다.',
+                              style: FlutterFlowTheme.of(context).bodyText2,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16, 12, 0, 0),
-                                child: Text(
-                                  '이메일을 입력하면 변경할 수 있는 페이지 링크를 받을 수 있습니다.',
-                                  style: FlutterFlowTheme.of(context).bodyText2,
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+                            child: TextFormField(
+                              controller: emailTextController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Email address here..',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).bodyText2,
+                                hintText:
+                                    'We will send a link to your email...',
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodyText2,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                prefixIcon: Icon(
+                                  Icons.email_outlined,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16, 16, 16, 0),
-                                child: TextFormField(
-                                  controller: emailTextController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Email address here..',
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).bodyText2,
-                                    hintText:
-                                        'We will send a link to your email...',
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).bodyText2,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    prefixIcon: Icon(
-                                      Icons.email_outlined,
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (val) {
+                                if (val == null || val.isEmpty) {
+                                  return 'Please fill in a new password..';
+                                }
+
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 26),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (emailTextController!.text.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Email required!',
+                                            ),
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      await resetPassword(
+                                        email: emailTextController!.text,
+                                        context: context,
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    text: 'Send Link',
+                                    options: FFButtonOptions(
+                                      width: 230,
+                                      height: 50,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryColor,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .subtitle1,
+                                      elevation: 3,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return 'Please fill in a new password..';
-                                    }
-
-                                    return null;
-                                  },
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 26),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (emailTextController!
-                                              .text.isEmpty) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Email required!',
-                                                ),
-                                              ),
-                                            );
-                                            return;
-                                          }
-                                          await resetPassword(
-                                            email: emailTextController!.text,
-                                            context: context,
-                                          );
-                                          Navigator.pop(context);
-                                        },
-                                        text: 'Send Link',
-                                        options: FFButtonOptions(
-                                          width: 230,
-                                          height: 50,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .subtitle1,
-                                          elevation: 3,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ));
+            ),
+          ),
+        );
       },
     );
   }

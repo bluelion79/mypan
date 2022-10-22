@@ -2,6 +2,8 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DarkLightModeSwicherWidget extends StatefulWidget {
@@ -14,47 +16,9 @@ class DarkLightModeSwicherWidget extends StatefulWidget {
 
 class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 350,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(40, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 350,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-40, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -70,14 +34,6 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
             InkWell(
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.dark);
-                if (animationsMap['containerOnActionTriggerAnimation2'] ==
-                    null) {
-                  return;
-                }
-                await (animationsMap['containerOnActionTriggerAnimation2']!
-                        .curvedAnimation
-                        .parent as AnimationController)
-                    .forward(from: 0.0);
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -145,10 +101,7 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
                                   borderRadius: BorderRadius.circular(30),
                                   shape: BoxShape.rectangle,
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation1']!
-                              ]),
+                              ),
                             ),
                           ],
                         ),
@@ -162,14 +115,6 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
             InkWell(
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.light);
-                if (animationsMap['containerOnActionTriggerAnimation1'] ==
-                    null) {
-                  return;
-                }
-                await (animationsMap['containerOnActionTriggerAnimation1']!
-                        .curvedAnimation
-                        .parent as AnimationController)
-                    .forward(from: 0.0);
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -238,10 +183,7 @@ class _DarkLightModeSwicherWidgetState extends State<DarkLightModeSwicherWidget>
                                   borderRadius: BorderRadius.circular(30),
                                   shape: BoxShape.rectangle,
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation2']!
-                              ]),
+                              ),
                             ),
                           ],
                         ),

@@ -16,4 +16,8 @@ Stream<MyTaskManagerFirebaseUser> myTaskManagerFirebaseUserStream() =>
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<MyTaskManagerFirebaseUser>(
-            (user) => currentUser = MyTaskManagerFirebaseUser(user));
+      (user) {
+        currentUser = MyTaskManagerFirebaseUser(user);
+        return currentUser!;
+      },
+    );

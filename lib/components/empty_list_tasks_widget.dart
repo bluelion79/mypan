@@ -80,7 +80,7 @@ class _EmptyListTasksWidgetState extends State<EmptyListTasksWidget> {
                     ),
                   );
                 },
-              );
+              ).then((value) => setState(() {}));
             },
             text: '수행 평가 목록 추가',
             options: FFButtonOptions(
